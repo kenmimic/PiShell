@@ -1,0 +1,11 @@
+#!/bin/bash
+DNS=8.8.8.8
+ping -c2 $DNS > /dev/null
+if [ $? != 0 ];then
+ ifdown --force wlan0
+ ifup wlan0
+service networking restart
+service ssh restart
+else
+ echo "Wifi is fine"
+fi

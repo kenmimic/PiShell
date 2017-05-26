@@ -1,0 +1,7 @@
+#!/bin/bash
+ss -anltp | grep '8081' > /dev/null
+if [ $? != 0 ]; then
+ /usr/bin/motion-mmal -c /root/mmal/mml.conf 
+else
+ echo "MotionEye Running"
+fi
