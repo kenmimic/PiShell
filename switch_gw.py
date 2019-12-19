@@ -37,7 +37,8 @@ if args.s:
 	for line in lines:
 	     dns.write(re.sub(r'^#nameserver', 'nameserver',line))
    dns.close()
-   print "add nameserver 8.8.8.8"
+   print "add nameserver 8.8.8.8 and restart resolvconf"
+   os.system("service resolvconf restart")
    sys.exit(0)
 
 if args.d:
@@ -49,5 +50,6 @@ if args.d:
         for line in lines:
              dns.write(re.sub(r'^nameserver', '#nameserver',line))
    dns.close()
-   print "remove nameserver 8.8.8.8"
+   print "remove nameserver 8.8.8.8 and restart resolvconf"
+   os.system("service resolvconf restart")
    sys.exit(0)
